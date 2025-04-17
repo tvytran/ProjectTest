@@ -1,10 +1,10 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template("home.html")
+    return render_template("home.html")  # not base.html
 
-# This is crucial for Vercel
+# For Vercel compatibility
 index = app.wsgi_app
