@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 
-# Tell Flask explicitly where to find static files
-app = Flask(__name__, static_folder='static', template_folder='templates')
+# Tell Flask where to look for templates and static assets
+app = Flask(__name__, static_folder="../static", template_folder="../templates")
 
 @app.route('/')
 def home():
