@@ -1,16 +1,14 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 import os
 
-base_dir = os.path.dirname(os.path.abspath(__file__))
-
-app = Flask(
-    __name__,
-    static_folder=os.path.join(base_dir, '..', 'static'),
-    template_folder=os.path.join(base_dir, '..', 'templates')
-)
+app = Flask(__name__)
 
 @app.route('/')
 def home():
     return render_template("home.html")
+
+@app.route('/static/<path:filename>')
+def serve_static(filename):
+    return send_from_directory(os.path.join(os.path.dirname(__file__), 'static'), filename)
 
 index = app.wsgi_app
