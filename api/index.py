@@ -1,10 +1,10 @@
 from flask import Flask, render_template
 
-app = Flask(__name__)
+# Tell Flask explicitly where to find static files
+app = Flask(__name__, static_folder='static', template_folder='templates')
 
 @app.route('/')
 def home():
-    return render_template("home.html")  # not base.html
+    return render_template("home.html")
 
-# For Vercel compatibility
 index = app.wsgi_app
