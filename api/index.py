@@ -12,3 +12,6 @@ def serve_static(filename):
     return send_from_directory(os.path.join(os.path.dirname(__file__), 'static'), filename)
 
 index = app.wsgi_app
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5001)
